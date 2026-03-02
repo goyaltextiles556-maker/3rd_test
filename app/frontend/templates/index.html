@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indian Equity Research Desk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Institutional Indian Stock Analyzer</h1>
+            <p>Enter ticker (example: RELIANCE.NS) and get a professional Buy/Avoid style verdict.</p>
+        </header>
+
+        <section class="controls">
+            <input id="tickerInput" type="text" placeholder="RELIANCE.NS" />
+            <button id="analyzeBtn">Analyze</button>
+            <div id="loader" class="loader hidden"></div>
+        </section>
+
+        <section id="errorBox" class="error hidden"></section>
+
+        <section id="summary" class="grid hidden">
+            <div class="card highlight">
+                <h3>Final Recommendation</h3>
+                <div id="verdict" class="verdict"></div>
+                <p id="confidence"></p>
+                <p id="horizon"></p>
+            </div>
+            <div class="card">
+                <h3>Composite Score</h3>
+                <div id="score" class="metric"></div>
+                <p id="riskReturn"></p>
+                <p id="probability"></p>
+            </div>
+            <div class="card">
+                <h3>Valuation Summary</h3>
+                <ul id="valuationList"></ul>
+            </div>
+            <div class="card">
+                <h3>Ownership Breakdown (Proxy)</h3>
+                <ul id="ownershipList"></ul>
+            </div>
+        </section>
+
+        <section id="chartSection" class="card hidden">
+            <h3>Price Trend vs Nifty 50</h3>
+            <canvas id="priceChart"></canvas>
+        </section>
+
+        <section id="riskHeatmap" class="card hidden">
+            <h3>Risk Heatmap</h3>
+            <div id="riskGrid" class="risk-grid"></div>
+        </section>
+
+        <section id="reasoning" class="grid hidden">
+            <div class="card">
+                <h3>Reasoning</h3>
+                <ul id="reasonList"></ul>
+            </div>
+            <div class="card">
+                <h3>Warning Signals / Exit Conditions</h3>
+                <ul id="warningList"></ul>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
